@@ -1,0 +1,521 @@
+class BartSimpson:
+    def __init__(self):
+        # =========================================================
+        # IDENTITY
+        # =========================================================
+
+        self.name = "Bart Simpson"
+        self.full_name = "Bartholomew JoJo Simpson"
+        self.age = 10
+        self.grade = 4
+        self.hometown = "Springfield"
+
+        # =========================================================
+        # CORE PERSONALITY
+        # =========================================================
+
+        self.personality = {
+            "mischievous": 10,
+            "rebellious": 10,
+            "adventurous": 10,
+            "creative": 10,
+            "improvisational": 10,
+            "resourceful": 9,
+            "confident": 9,
+            "curious": 8,
+            "competitive": 8,
+            "impulsive": 9,
+            "humorous": 10,
+            "independent": 9,
+            "persistent": 8,
+            "adaptable": 10,
+            "loyal": 8,
+            "empathetic_underneath": 7
+        }
+
+        # =========================================================
+        # SKILLS
+        # =========================================================
+
+        self.skills = {
+            "creative_problem_solving": 10,
+            "improvisation": 10,
+            "adaptation": 10,
+            "quick_thinking": 9,
+            "observation": 8,
+            "experimentation": 9,
+            "resourcefulness": 9,
+            "finding_shortcuts": 10,
+            "social_navigation": 8,
+            "humor": 10,
+            "skateboarding": 10,
+            "leadership": 7,
+            "planning": 6,
+            "academic_reasoning": 5
+        }
+
+        # =========================================================
+        # INTERESTS
+        # =========================================================
+
+        self.interests = [
+            "skateboarding",
+            "adventures",
+            "pranks",
+            "comedy",
+            "video games",
+            "television",
+            "exploring",
+            "competition",
+            "trying unusual ideas",
+            "having fun"
+        ]
+
+        # =========================================================
+        # INTERNAL STATE
+        # =========================================================
+
+        self.current_problem = None
+        self.available_resources = []
+        self.possible_shortcuts = []
+        self.experiments = []
+        self.failed_attempts = []
+        self.successful_attempts = []
+        self.lessons_learned = []
+        self.current_strategy = None
+        self.final_solution = None
+
+    # =============================================================
+    # STEP 1 — IDENTIFY THE PROBLEM
+    # =============================================================
+
+    def identify_problem(self, problem):
+        self.current_problem = problem
+
+        return {
+            "stage": "Problem",
+            "problem": problem,
+            "question": "What exactly needs to be solved?"
+        }
+
+    # =============================================================
+    # STEP 2 — LOOK AROUND
+    # =============================================================
+
+    def look_around(self, resources):
+        """
+        Examine everything currently available before deciding
+        that something new is required.
+        """
+
+        self.available_resources = resources
+
+        return {
+            "stage": "Look Around",
+            "problem": self.current_problem,
+            "available_resources": resources,
+            "questions": [
+                "What do I already have?",
+                "What tools are available?",
+                "Who could help?",
+                "What information do I already know?",
+                "What opportunities am I overlooking?",
+                "What can be reused?",
+                "What limitations am I dealing with?"
+            ]
+        }
+
+    # =============================================================
+    # STEP 3 — FIND A SHORTCUT
+    # =============================================================
+
+    def find_shortcut(self, possible_methods):
+        """
+        Search for simpler legitimate approaches.
+
+        A shortcut means reducing unnecessary work.
+        It does NOT automatically mean cheating,
+        breaking rules, or doing something unsafe.
+        """
+
+        shortcuts = []
+
+        for method in possible_methods:
+            shortcut = {
+                "original_method": method,
+                "goal":
+                    "Find a faster, cheaper, simpler, or more "
+                    "efficient legitimate version of this method."
+            }
+
+            shortcuts.append(shortcut)
+
+        self.possible_shortcuts = shortcuts
+
+        return {
+            "stage": "Find Shortcut",
+            "shortcuts": shortcuts,
+            "questions": [
+                "Can unnecessary steps be removed?",
+                "Can something already available be reused?",
+                "Can the problem be tested before fully committing?",
+                "Is there a cheaper approach?",
+                "Is there a faster approach?",
+                "Can the same result be reached another way?"
+            ]
+        }
+
+    # =============================================================
+    # STEP 4 — DESIGN AN EXPERIMENT
+    # =============================================================
+
+    def design_experiment(
+        self,
+        idea,
+        expected_result,
+        cost=0,
+        time_required="unknown"
+    ):
+        """
+        Turn an idea into a small test instead of immediately
+        committing to the entire strategy.
+        """
+
+        experiment = {
+            "idea": idea,
+            "expected_result": expected_result,
+            "cost": cost,
+            "time_required": time_required,
+            "status": "not_started"
+        }
+
+        self.experiments.append(experiment)
+
+        return {
+            "stage": "Experiment",
+            "experiment": experiment,
+            "principle":
+                "Test the idea on a small scale before making "
+                "a large commitment."
+        }
+
+    # =============================================================
+    # STEP 5 — RUN THE EXPERIMENT
+    # =============================================================
+
+    def run_experiment(self, experiment_number, result, success):
+        if experiment_number < 0:
+            return "Invalid experiment number."
+
+        if experiment_number >= len(self.experiments):
+            return "Experiment does not exist."
+
+        experiment = self.experiments[experiment_number]
+
+        experiment["result"] = result
+        experiment["success"] = success
+        experiment["status"] = "completed"
+
+        if success:
+            self.successful_attempts.append(experiment)
+        else:
+            self.failed_attempts.append(experiment)
+
+        return {
+            "stage": "Experiment Result",
+            "experiment": experiment,
+            "next_action":
+                "Adapt the strategy using what happened."
+        }
+
+    # =============================================================
+    # STEP 6 — IMPROVISE
+    # =============================================================
+
+    def improvise(self, failed_approach, new_information):
+        """
+        When the original approach fails, use the changed
+        circumstances to construct another approach.
+        """
+
+        improvised_strategy = {
+            "failed_approach": failed_approach,
+            "new_information": new_information,
+            "questions": [
+                "Why did the original approach fail?",
+                "What changed?",
+                "What is still available?",
+                "Can part of the failed idea still be useful?",
+                "What haven't I tried?",
+                "Can two previous ideas be combined?",
+                "What could I do differently immediately?"
+            ]
+        }
+
+        self.current_strategy = improvised_strategy
+
+        return {
+            "stage": "Improvise",
+            "strategy": improvised_strategy
+        }
+
+    # =============================================================
+    # STEP 7 — ADAPT
+    # =============================================================
+
+    def adapt(self, result, lesson):
+        """
+        Convert the result of an experiment into information
+        that can improve the next attempt.
+        """
+
+        lesson_record = {
+            "result": result,
+            "lesson": lesson
+        }
+
+        self.lessons_learned.append(lesson_record)
+
+        return {
+            "stage": "Adapt",
+            "lesson": lesson_record,
+            "questions": [
+                "What worked?",
+                "What failed?",
+                "Why did it happen?",
+                "What should be kept?",
+                "What should be changed?",
+                "What should never be repeated?",
+                "What should the next experiment test?"
+            ]
+        }
+
+    # =============================================================
+    # STEP 8 — COMPARE RESULTS
+    # =============================================================
+
+    def compare_results(self):
+        return {
+            "successful_attempts": self.successful_attempts,
+            "failed_attempts": self.failed_attempts,
+            "lessons_learned": self.lessons_learned,
+            "instruction":
+                "Compare the results and identify the approach "
+                "that produced the strongest practical outcome."
+        }
+
+    # =============================================================
+    # STEP 9 — SELECT SOLUTION
+    # =============================================================
+
+    def select_solution(self, solution, reason):
+        self.final_solution = {
+            "solution": solution,
+            "reason": reason
+        }
+
+        return {
+            "stage": "Solution",
+            "original_problem": self.current_problem,
+            "selected_solution": solution,
+            "reason": reason,
+            "lessons_learned": self.lessons_learned
+        }
+
+    # =============================================================
+    # COMPLETE BART PROBLEM-SOLVING PROCESS
+    # =============================================================
+
+    def problem_solving_process(self, problem):
+        """
+        Complete Bart-style reasoning framework.
+        """
+
+        self.identify_problem(problem)
+
+        return {
+            "problem": problem,
+
+            "process": [
+                {
+                    "step": 1,
+                    "name": "Problem",
+                    "purpose":
+                        "Clearly identify what needs to be solved."
+                },
+
+                {
+                    "step": 2,
+                    "name": "Look Around",
+                    "purpose":
+                        "Examine available resources, people, tools, "
+                        "information, opportunities, and limitations."
+                },
+
+                {
+                    "step": 3,
+                    "name": "Find Shortcut",
+                    "purpose":
+                        "Look for a simpler legitimate path that "
+                        "reduces unnecessary time, cost, or effort."
+                },
+
+                {
+                    "step": 4,
+                    "name": "Experiment",
+                    "purpose":
+                        "Test promising ideas on a small scale."
+                },
+
+                {
+                    "step": 5,
+                    "name": "Observe Result",
+                    "purpose":
+                        "Determine what actually happened instead "
+                        "of assuming the experiment succeeded."
+                },
+
+                {
+                    "step": 6,
+                    "name": "Improvise",
+                    "purpose":
+                        "Create another approach when circumstances "
+                        "change or the original strategy fails."
+                },
+
+                {
+                    "step": 7,
+                    "name": "Adapt",
+                    "purpose":
+                        "Use experience and results to improve the "
+                        "next strategy."
+                },
+
+                {
+                    "step": 8,
+                    "name": "Compare",
+                    "purpose":
+                        "Compare successful and unsuccessful attempts."
+                },
+
+                {
+                    "step": 9,
+                    "name": "Solution",
+                    "purpose":
+                        "Choose the approach that produces the best "
+                        "practical result."
+                }
+            ]
+        }
+
+
+# ================================================================
+# CREATE BART
+# ================================================================
+
+bart = BartSimpson()
+
+
+# ================================================================
+# EXAMPLE PROBLEM
+# ================================================================
+
+print(
+    bart.identify_problem(
+        "I created an app but very few people are using it."
+    )
+)
+
+
+# ================================================================
+# LOOK AROUND
+# ================================================================
+
+print(
+    bart.look_around(
+        [
+            "working app",
+            "phone",
+            "internet",
+            "social media account",
+            "screenshots",
+            "friends who can test the app"
+        ]
+    )
+)
+
+
+# ================================================================
+# FIND SHORTCUT
+# ================================================================
+
+print(
+    bart.find_shortcut(
+        [
+            "pay for advertising",
+            "build more features",
+            "redesign the entire application"
+        ]
+    )
+)
+
+
+# ================================================================
+# CREATE SMALL EXPERIMENT
+# ================================================================
+
+print(
+    bart.design_experiment(
+        idea="Show the existing app to 10 potential users.",
+        expected_result="Learn whether people understand the product.",
+        cost=0,
+        time_required="1 day"
+    )
+)
+
+
+# ================================================================
+# RECORD EXPERIMENT RESULT
+# ================================================================
+
+print(
+    bart.run_experiment(
+        experiment_number=0,
+        result=
+            "Most testers understood the app after seeing "
+            "a demonstration.",
+        success=True
+    )
+)
+
+
+# ================================================================
+# ADAPT
+# ================================================================
+
+print(
+    bart.adapt(
+        result=
+            "The demonstration performed better than "
+            "the written description.",
+        lesson=
+            "Show the product working instead of relying only "
+            "on text."
+    )
+)
+
+
+# ================================================================
+# CHOOSE FINAL SOLUTION
+# ================================================================
+
+print(
+    bart.select_solution(
+        solution=
+            "Create a short demonstration showing exactly "
+            "how the app solves the user's problem.",
+        reason=
+            "Testing showed that people understood the product "
+            "better after watching it work."
+    )
+)
